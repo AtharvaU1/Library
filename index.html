@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <h2>Library</h2>
+        <button class="addBook">Add a book</button>
+    </div>
+
+    <div class="wrapper">
+        <div class="booksDiv">
+
+        </div>
+    </div>  
+    
+    <div class="modal">
+        <span class="close">&times;</span>
+        <form action="">
+            <ul>
+                <li>
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title">
+                </li>
+                <li>
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" name="author">
+                </li>
+                <li>
+                    <label for="pages">Pages:</label>
+                    <input type="number" id="pages" name="pages">
+                </li>
+                <li>
+                    <label for="read">Have you read the book?</label>
+                    <input type="checkbox" id="read" name="read">
+                </li>
+            </ul>
+        </form>
+    </div>
+
+    <div class="node"> 
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <button class="toggleRead"></button>
+    </div>
+
+    <footer><p>Developed by&nbsp;</p><a href="https://atharvautekar.pages.dev" target="_blank">Atharva Utekar</a></footer>
+
+</body>
+</html>
