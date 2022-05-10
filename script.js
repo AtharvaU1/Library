@@ -74,12 +74,17 @@ function display(){
         booksDiv.appendChild(clone).className = 'card';
     }
     deleteButton = document.querySelectorAll('.deleteMe');
-    console.log(deleteButton);
+
+    deleteButton.forEach(button => {
+        button.addEventListener('click', () => {
+            //console.log('triggering button');
+            const index = parseInt(button.parentNode.dataset.value);
+            if(isNaN(index)) return;
+            myLibrary.splice(index, 1);
+            //console.log(myLibrary, index);
+            display();
+        });
+    });
+    //console.log(deleteButton);
 }
 display();
-
-deleteButton.forEach(button => {
-    button.addEventListener('click', (e) => {
-        console.log(1);
-    });
-});
