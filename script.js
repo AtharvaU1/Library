@@ -7,9 +7,11 @@ function book(author, title, noOfPages, read){
     this.read = read;
 }
 
-function addBookToLibrary(){
-    const bookToAdd = new book();
+function addBookToLibrary(author, title, pages, read){
+    const bookToAdd = new book(author, title, pages, read);
     myLibrary.push(bookToAdd);
+    //console.log(bookToAdd);
+    display();
 }
 
 const bookOne = new book('Agatha Christie', 'Murder on the Orient Express', 184, true);
@@ -24,6 +26,8 @@ const displayModalBtn = document.querySelector('.addBook');
 const closeBtn = document.querySelector('.close');
 const node = document.querySelector('.node');
 const booksDiv = document.querySelector('.booksDiv');
+const submitButton = document.querySelector('.submit');
+let deleteButton = document.querySelectorAll('.deleteMe');
 
 displayModalBtn.addEventListener('click', () => {
     modal.style.display = 'block';
@@ -39,20 +43,43 @@ document.body.addEventListener('click', (event) => {
     }
 });
 
+submitButton.addEventListener('click', () => {
+    const authorInput = document.querySelector('#author').value;
+    const titleInput = document.querySelector('#title').value;
+    const pages = document.querySelector('#pages').value;
+    const checkedOrNot = document.querySelector('#read').checked;
+    
+    if(authorInput.length==0 || titleInput.length==0 || pages.length==0) return;
+
+    addBookToLibrary(authorInput, titleInput, pages, checkedOrNot);
+    document.querySelector('.form').reset();
+});
+
 
 function display(){
     const size = myLibrary.length;
+    while(booksDiv.firstChild){
+        booksDiv.removeChild(booksDiv.lastChild);
+    }
+
     for(let i = 0 ; i < size ; i++){
         const clone = node.cloneNode(true);
         const child = clone.childNodes;
         
-        child[1].textContent = `Title: ${myLibrary[i].title}`;
-        child[3].textContent = `Author: ${myLibrary[i].author}`;
-        child[5].textContent = `No. of Pages: ${myLibrary[i].noOfPages}`;
-        myLibrary[i].read === true ? child[7].textContent = 'Read: Yes' : child[7].innerText = 'Read: No';
-        console.log(child[3]);
+        child[3].textContent = `Title: ${myLibrary[i].title}`;
+        child[5].textContent = `Author: ${myLibrary[i].author}`;
+        child[7].textContent = `No. of Pages: ${myLibrary[i].noOfPages}`;
+        myLibrary[i].read === true ? child[9].textContent = 'Read: Yes' : child[9].innerText = 'Read: No';
+        clone.setAttribute('data-value', `${i}`);
         booksDiv.appendChild(clone).className = 'card';
     }
+    deleteButton = document.querySelectorAll('.deleteMe');
+    console.log(deleteButton);
 }
-
 display();
+
+deleteButton.forEach(button => {
+    button.addEventListener('click', (e) => {
+        console.log(1);
+    });
+});
