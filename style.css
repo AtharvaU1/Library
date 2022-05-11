@@ -1,22 +1,169 @@
 *{
     margin: 0;
     padding: 0;
-}
-
-ul{
     list-style: none;
 }
 
-.modal{
-    /* position: fixed; */
-    display: block;
-    z-index: 1;
-}
-
-.card{
-    width: 200px;
+html{
+    font-size: 10px;
+    background-color: #212529;
+    color: #E9ECEF;
 }
 
 button{
+    border-radius: 5px;
+    background-color: #DEE2E6;
+}
+
+html, button{
+    font-family: 'Roboto Flex', sans-serif, "Courier New", Courier, monospace;
+}
+
+.node{
+    display: none;
+}
+
+.header{
+    height: 15vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 3rem;
+}
+
+.header > button{
+    height: 50px;
+    width: 170px;
+    font-size: 2rem;
+}
+
+.wrapper, .booksDiv{
+    width: 100%;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.booksDiv{
+    min-height: 80vh;
+    width: 65%;
+    margin-top: 5vh;
+    font-size: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 250px;
+    column-gap: 150px;
+    row-gap: 50px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #343A40;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.card > .deleteMe, .modalContent > button{
+    font-size: 2rem;
+    height: 25px;
     width: 30px;
+    align-self: flex-end;
+}
+
+.card > .toggleRead, .modalContent > form > .submit{
+    font-size: 1.4rem;
+    height: 40px;
+    width: 105px;
+    align-self: center;
+}
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modalContent{
+    display: flex;
+    flex-direction: column;
+    width: max(25%, 300px);
+    height: 200px;
+    margin: 15% auto;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 2rem;
+    background-color: #343A40;
+}
+
+.modalContent > form{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.modalContent > form > ul{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+
+.modalContent > form > ul > li{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.modalContent > form > ul > li > label{
+    justify-self: end;
+}
+
+.modalContent > form > ul > li > input{    
+    font-family: inherit;
+    font-size: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 1.5px solid #615d5d;
+}
+
+#read{
+    width: 20px;
+    height: 20px;
+}
+
+footer{
+    font-size: 1.7rem;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a{
+    color: inherit;
+}
+
+@media(max-width: 1055px){
+    html{
+        font-size: 55%;
+    }
+}
+
+@media(max-width: 480px){
+    html{
+        font-size: 45%;
+    }
 }

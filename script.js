@@ -22,12 +22,14 @@ const bookFour = new book('Karen M. McManus ', 'One of Us Is Lying', 416, false)
 myLibrary.push(bookOne, bookTwo, bookThree, bookFour);
 
 const modal = document.querySelector('.modal');
+const modalContent = document.querySelector('.modalContent');
 const displayModalBtn = document.querySelector('.addBook');
 const closeBtn = document.querySelector('.close');
 const node = document.querySelector('.node');
 const booksDiv = document.querySelector('.booksDiv');
 const submitButton = document.querySelector('.submit');
 let deleteButton = document.querySelectorAll('.deleteMe');
+let toggleRead = document.querySelectorAll('.toggleRead');
 
 displayModalBtn.addEventListener('click', () => {
     modal.style.display = 'block';
@@ -38,7 +40,7 @@ closeBtn.addEventListener('click', () => {
 });
 
 document.body.addEventListener('click', (event) => {
-    if(!modal.contains(event.target) && event.target.className !== 'addBook'){
+    if(modal.contains(event.target) && !modalContent.contains(event.target)){
         modal.style.display = 'none';
     }
 });
@@ -74,6 +76,7 @@ function display(){
         booksDiv.appendChild(clone).className = 'card';
     }
     deleteButton = document.querySelectorAll('.deleteMe');
+    toggleRead = document.querySelectorAll('.toggleRead');
 
     deleteButton.forEach(button => {
         button.addEventListener('click', () => {
@@ -86,5 +89,14 @@ function display(){
         });
     });
     //console.log(deleteButton);
+
+    toggleRead.forEach(button => {
+        button.addEventListener('click', () => {
+            const index = parseInt(button.parentNode.dataset.value);
+            if(isNaN(index)) return;
+            myLibrary[index].read = !myLibrary[index].read;
+            myLibrary[index].read === true ? button.parentNode.childNodes[9].textContent = 'Read: Yes' : button.parentNode.childNodes[9].textContent = 'Read: No'; 
+        });
+    });
 }
 display();
